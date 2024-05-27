@@ -60,7 +60,7 @@ npm start <path_to_text_file>
 For a predefined set of URLs, run;
 ```sh
 
-npm start example.com
+npm start example.txt
 
 ```
 ### From stdin
