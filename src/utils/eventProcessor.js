@@ -1,5 +1,5 @@
-const EventEmitter = require("events");
-const { makeHttpRequest, parseResponse, hashEmail } = require("./requestHandler");
+import EventEmitter from 'events'
+import { makeHttpRequest, parseResponse, hashEmail } from "./requestHandler.js";
 
 const urlEmitter = new EventEmitter();
 
@@ -26,7 +26,7 @@ function setupEventProcessor(urlQueue, retryQueue, reqs, stdinInput) {
             retryQueue.length === 0 &&
             !Object.keys(reqs).some((key) => reqs[key] === true)
         )
-            process.exit(1);
+            process.exit(0);
     }, 1000);
 }
 
@@ -55,11 +55,13 @@ async function processUrl(urlObject, reqs, retryQueue) {
 process.on("exit", () => {
     console.log("######################################");
     console.log(finalResult.join("\n"));
-    console.log("\nFAILS:");
-    console.log(finalFails.join("\n"));
+    if (finalFails.length > 0) {
+        console.log("\nFAILS:");
+        console.log(finalFails.join("\n"));
+    }
     console.log("######################################");
 });
 
-module.exports = {
+export {
     setupEventProcessor,
 };

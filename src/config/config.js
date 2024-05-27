@@ -1,5 +1,5 @@
-const dotenv = require('dotenv');
-dotenv.config();
+import { config } from "dotenv";
+config();
 
 const SECRET = process.env.IM_SECRET;
 
@@ -8,6 +8,4 @@ if (!SECRET) {
     process.exit(1);
 }
 
-module.exports = {
-    SECRET
-};
+export { SECRET };

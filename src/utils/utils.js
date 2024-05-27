@@ -20,7 +20,6 @@ const charCount = (text, character) => {
 
 const extractUrls = async (text, seenUrls, urlQueue) => {
     text = text.replace(/\\\[/g, " ").replace(/\\\]/g, " ").trim();
-    console.log(text);
     const urls = [];
     for (let i = 0; i < text.length; i++) {
         if (text[i] === "[") {
@@ -56,7 +55,7 @@ const extractUrls = async (text, seenUrls, urlQueue) => {
             const elements = bracketSubstring.split(" ").filter((el) => el.length > 0);
             
             i = closingIndex;
-            for (j = elements.length - 1; j >= 0; j--) {
+            for (let j = elements.length - 1; j >= 0; j--) {
                 if (isValidURL(elements[j])) {
                     // in the assignment, it states "As soon as the URL is detected, the script should make a HTTP GET request towards it"
                     // thats why I'm sending a request ASAP
@@ -64,15 +63,19 @@ const extractUrls = async (text, seenUrls, urlQueue) => {
                     if (!seenUrls.has(url)) {
                         seenUrls.add(url);
                         urlQueue.push({ url });
+                        urls.push(url)
                     }
                     break;
                 }
             }
         }
     }
+    // testing purposes
     return urls;
 }
 
-module.exports = {
-    isValidURL, charCount, extractUrls
-}
+export {
+    isValidURL,
+    charCount,
+    extractUrls
+};

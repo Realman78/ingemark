@@ -1,29 +1,19 @@
-const fs = require("fs");
-const readline = require("readline");
-const dotenv = require("dotenv");
+import { readFile } from "fs";
+import { createInterface } from "readline";
 
-const { extractUrls } = require("./utils/utils");
-const { setupEventProcessor } = require("./utils/eventProcessor");
-
-dotenv.config();
-
-const SECRET = process.env.IM_SECRET;
+import { extractUrls } from "./utils/utils.js";
+import { setupEventProcessor } from "./utils/eventProcessor.js";
 
 const seenUrls = new Set();
 const urlQueue = [];
 const retryQueue = [];
 const reqs = {};
 
-if (!SECRET) {
-    console.error("IM_SECRET environment variable is not set.");
-    process.exit(1);
-}
-
 async function main() {
     const args = process.argv.slice(2);
     setupEventProcessor(urlQueue, retryQueue, reqs, args.length === 0);
     if (args.length === 0) {
-        const rl = readline.createInterface({
+        const rl = createInterface({
             input: process.stdin,
             output: process.stdout,
             terminal: false,
@@ -35,11 +25,11 @@ async function main() {
 
         rl.on("close", () => {
             console.log("done");
-            process.exit(1)
+            process.exit(0)
         });
     } else {
         const filePath = args[0];
-        fs.readFile(filePath, "utf-8", async (err, data) => {
+        readFile(filePath, "utf-8", async (err, data) => {
             if (err) {
                 console.error(`Failed to read file: ${err.message}`);
                 process.exit(1);

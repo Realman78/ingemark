@@ -1,6 +1,6 @@
-const axios = require('axios');
-const crypto = require('crypto');
-const { SECRET } = require('../config/config');
+import axios from 'axios';
+import crypto from 'crypto';
+import { SECRET } from '../config/config.js';
 
 async function makeHttpRequest(url) {
     if (!/^https?:\/\//i.test(url)) {
@@ -28,7 +28,7 @@ function hashEmail(email) {
     return crypto.createHmac("sha256", SECRET).update(email).digest("hex");
 }
 
-module.exports = {
+export {
     makeHttpRequest,
     parseResponse,
     hashEmail
