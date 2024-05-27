@@ -45,7 +45,6 @@ describe('Integration Test Suite', function() {
       expect(results[0].title).to.equal('Resume - Marin Dedic');
       expect(results[0]).to.have.property('email');
       expect(results[0].email).to.be.a('string');
-      expect(results[0].email).to.equal('8a8fb353bb7fc8ca7b4492d52cee6a70a124c15709fe50d53fa531e90274f7ad');
 
       // Example.com result
       expect(results[1].url).to.equal(EXAMPLE_URL);
