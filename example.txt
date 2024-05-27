@@ -1,0 +1,15 @@
+bla bla asdfasdf www.google.com
+yet another example [www.google.hr marin] sdfgs
+yet another example [ok www.google.hr] sdfgs
+yet another example [ www.google.it marin ] sdfgs
+other example [ www.developer.mozilla.org.com ] fg
+yet another example [ some text www.google.com ] sdfgs
+multiple urls [bla www.first.com asdfasdf www.bbc.com truc]
+multiple levels[ [www.first.com] www.ingemark.com/contact]
+multiple levels[ www.first.com [www.third.com]]
+asdf \[www.google.com]
+[www.google.com marin www.example.com]
+[ www.google.com marin www.dev.to ]
+[ www.google.com marin www.geeksforgeeks.org]
+multiple levels[ \[www.first.com\] www.second.com]
+multiple zagrade [ www.first.com www.second.com] [ www.fourth.com onecompiler.com/javascript/42ef6hawq] [ www.sixth.com [www.stackoverflow.com]]
