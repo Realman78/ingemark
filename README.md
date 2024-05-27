@@ -71,7 +71,7 @@ npm start
 
 ```
 
-Exit stdin using Ctrl+D.
+Exit stdin using *Ctrl+D*
 
 ## Testing
 ```sh
