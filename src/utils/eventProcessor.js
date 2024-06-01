@@ -42,7 +42,7 @@ async function processUrl(urlObject, reqs, retryQueue) {
         console.log(JSON.stringify(result));
         finalResult.push(JSON.stringify(result));
     } catch (error) {
-        let errMessage = `Failed to fetch ${url}: ${error.message}.${timestamp ? " Retrying in 60 seconds..." : ""}`
+        let errMessage = `Failed to fetch ${url}: ${error.message}.${!timestamp ? " Retrying in 60 seconds..." : ""}`
         if (!timestamp) retryQueue.push({ url, timestamp: Date.now() + 60*1000 });
         else finalFails.push(errMessage);
         
