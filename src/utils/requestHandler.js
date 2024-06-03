@@ -16,11 +16,11 @@ async function makeHttpRequest(url) {
 
 function parseResponse(data) {
     const titleMatch = data.match(/<title>(.*?)<\/title>/i);
-    const title = titleMatch ? titleMatch[1] : null;
+    const title = titleMatch ? titleMatch[1].toString() : null;
     const emailMatch = data.match(
         /(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))/
     );
-    const email = emailMatch ? emailMatch[0].toString() : null;
+    const email = emailMatch ? emailMatch[1].toString() : null;
     return { title, email };
 }
 
